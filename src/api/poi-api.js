@@ -93,7 +93,10 @@ export const poiApi = {
                 const loggedInUser = request.auth.credentials
                 const poi = await db.poiStore.getPOIById(request.params.id);
                 if (loggedInUser.hasAdminRights || poi.createdBy.equals(loggedInUser._id)) {
-
+                    for (let url of poi.img) {
+                        await imageStore.deleteImage(url);
+                    }
+                    await db.poiStore.deleteImage(poi);
                     await db.poiStore.deletePOIById(poi._id);
                     return h.response().code(204);
                 }
@@ -115,10 +118,6 @@ export const poiApi = {
                 const newPOI = request.payload;
                 const poi = await db.poiStore.getPOIById(request.params.id);
                 if (loggedInUser.hasAdminRights || poi.createdBy.equals(loggedInUser._id)) {
-                    for (let url of poi.img) {
-                        await imageStore.deleteImage(url);
-                    }
-                    await db.poiStore.deleteImage(poi);
                     await db.poiStore.updatePOI(poi, newPOI);
                     return true;
                 }
