@@ -26,9 +26,10 @@ export const POISpec= Joi.object()
         name: Joi.string().required().example("asdsaddsa"),
         description: Joi.string().required().allow("").example("fdgfggffdgfgd"),
         categoryName: Joi.string().allow(""),
-        category:IdSpec,
+        category: Joi.any().optional(),
+        categoryId: IdSpec,
         createdBy: IdSpec,
-        img: Joi.string().optional(),
+        img: Joi.array().optional(),
     })
 export const POISpecPlusLocation = POISpec.keys({
     _id: IdSpec,
@@ -49,5 +50,6 @@ export const JwtAuth = Joi.object()
     .keys({
         success: Joi.boolean().example("true").required(),
         token: Joi.string().example("eyJhbGciOiJND.g5YmJisIjoiaGYwNTNjAOhE.gCWGmY5-YigQw0DCBo").required(),
+        id: IdSpec,
     })
     .label("JwtAuth");

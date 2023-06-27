@@ -26,9 +26,7 @@ export const poiApi = {
     },
 
     findOne: {
-        auth: {
-            strategy: "jwt",
-        },
+        auth: false,
         handler: async function(request, h) {
             try {
                 const poi = await db.poiStore.getPOIById(request.params.id);
@@ -44,7 +42,7 @@ export const poiApi = {
         description: "Get one point of interest",
         notes: "Returns one point of interest",
         validate: { params: { id: IdSpec }, failAction: validationError },
-        response: { schema: POISpecPlusLocation, failAction: validationError },
+        //response: { schema: POISpecPlusLocation, failAction: validationError },
     },
 
     create: {
@@ -85,4 +83,46 @@ export const poiApi = {
         tags: ["api"],
         description: "Delete all points of interest",
     },
+    deleteOne:{
+        auth: {
+            strategy: "jwt",
+        },
+        handler: async function(request, h) {
+            try {
+                const loggedInUser = request.auth.credentials
+                const poi = await db.poiStore.getPOIById(request.params.id);
+                if (loggedInUser.hasAdminRights || poi.createdBy.equals(loggedInUser._id)) {
+                    await db.poiStore.deletePOIById(poi._id);
+                    return h.response().code(204);
+                }
+            } catch (err) {
+                return Boom.serverUnavailable(err);
+            }
+        },
+        tags: ["api"],
+        description: "Delete one point of interest",
+        validate: { params: { id: IdSpec }, failAction: validationError },
+    },
+    updatePOI: {
+        auth: {
+            strategy: "jwt",
+        },
+        handler: async function (request, h) {
+            try {
+                const loggedInUser = request.auth.credentials;
+                const newPOI = request.payload;
+                const poi = await db.poiStore.getPOIById(request.params.id);
+                if (loggedInUser.hasAdminRights || poi.createdBy.equals(loggedInUser._id)) {
+                    await db.poiStore.updatePOI(poi, newPOI);
+                    return true;
+                }
+                return false;
+            } catch (err) {
+                console.log(err);
+                return false;
+            }
+        }
+    },
+
+
 };
