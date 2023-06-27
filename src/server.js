@@ -18,7 +18,7 @@ import { validate } from "./api/jwt-utils.js";
 const swaggerOptions = {
     info: {
         title: "Placemark API",
-        version: "0.1",
+        version: "1.0",
     },
     securityDefinitions: {
         jwt: {
