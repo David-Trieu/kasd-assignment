@@ -109,7 +109,72 @@ export const seedData = {
       categoryName: "->categories.cat2.name",
       createdBy: "->users.Mona",
     },
-
+    poi4:{
+      name: "Neuschwanstein Castle",
+      location:{
+        latitude:"47.55",
+        longitude:"10.749"
+      },
+      description:"A famous castel near Hohenschwangau",
+      categoryId: "->categories.cat2",
+      categoryName: "->categories.cat2.name",
+      createdBy: "->users.Mona",
+    },
+    poi5:{
+      name: "Taj Mahal",
+      location:{
+        latitude:"27.175",
+        longitude:"78.042"
+      },
+      description:"The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar Pradesh, India.",
+      categoryId: "->categories.cat2",
+      categoryName: "->categories.cat2.name",
+      createdBy: "->users.Mona",
+    },
+    poi6:{
+      name: "Singapore",
+      location:{
+        latitude:"1.2833",
+        longitude:"103.8333"
+      },
+      description:"Singapore, officially the Republic of Singapore, is an island country and city-state in maritime Southeast Asia.",
+      categoryId: "->categories.cat9",
+      categoryName: "->categories.cat9.name",
+      createdBy: "->users.David",
+    },
+    poi7:{
+      name: "Stonehenge",
+      location:{
+        latitude:"51.1788",
+        longitude:"-1.82611"
+      },
+      description:"Stonehenge is a prehistoric monument on Salisbury Plain in Wiltshire, England, two miles (3 km) west of Amesbury.",
+      categoryId: "->categories.cat12",
+      categoryName: "->categories.cat12.name",
+      createdBy: "->users.David",
+    },
+    poi8:{
+      name: "Golden Gate Bridge",
+      location:{
+        latitude:"37.8197",
+        longitude:"-122.4786"
+      },
+      description:"The Golden Gate Bridge is a suspension bridge spanning the Golden Gate, the one-mile-wide (1.6 km) strait connecting San Francisco Bay and the Pacific Ocean.",
+      categoryId: "->categories.cat4",
+      categoryName: "->categories.cat4.name",
+      createdBy: "->users.David",
+    },
+    poi9:{
+      name: "Bodhi Tree",
+      location:{
+        latitude:"24.695",
+        longitude:"84.9914"
+      },
+      description:"The Bodhi Tree, also called the Mahabodhi Tree, Bo Tree, is a large sacred fig tree located in Bodh Gaya, Bihar, India.",
+      categoryId: "->categories.cat5",
+      categoryName: "->categories.cat5.name",
+      createdBy: "->users.David",
+    },
 
   }
 };
