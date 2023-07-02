@@ -1,2 +1,2 @@
 # kasd-assignment
-Readme file of my project I dont know what to write yet
+Now, this is the hapi-part of my project but if you go into the commit history you will find a big time jump. Before these big changes we're implemented this part was the state before I went over to svelte. After that I thought in order to upload it to render I had to put it into a seperate repo, thats why I copied it over here. So to find out what happened in the time skip please look at my second repository, they both are part of one project.
